@@ -39,7 +39,7 @@ export default function SettingsModal({ setIsOpen }: { setIsOpen: (value: boolea
           <h2 className="text-xl font-bold mb-4">API Key Girişi</h2>
           <p className="text-gray-600 mb-4">
             Hava durumu bilgilerini almak için API Keyinizi girin.
-            <p>API Keyi <a href="https://home.openweathermap.org/api_keys" target="_blank">buradan</a> alabilirsiniz.</p>
+            API Keyi <a href="https://home.openweathermap.org/api_keys" target="_blank" className="text-blue-500 underline">buradan</a> alabilirsiniz.
           </p>
           <input
               type="text"
