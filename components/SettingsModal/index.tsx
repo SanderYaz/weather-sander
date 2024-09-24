@@ -15,13 +15,14 @@ export default function SettingsModal({ setIsOpen }: { setIsOpen: (value: boolea
       }
       return true; // API Key geçerli
     } catch (error) {
+      console.error(error);
       return false; // API Key geçersiz
     }
   };
 
   const handleSave = async () => {
     if (apiKey) {
-      const isValid = await validateApiKey(); // API Key doğrulaması
+      const isValid = await validateApiKey();
       if (isValid) {
         sessionStorage.setItem('apiKey', apiKey);
         setIsOpen(false);
@@ -37,8 +38,8 @@ export default function SettingsModal({ setIsOpen }: { setIsOpen: (value: boolea
         <div className="bg-white p-6 rounded-lg shadow-lg">
           <h2 className="text-xl font-bold mb-4">API Key Girişi</h2>
           <p className="text-gray-600 mb-4">
-            Hava durumu bilgilerini almak için API Key'inizi girin.
-            API Key'i <a href="https://home.openweathermap.org/api_keys" target="_blank" className="text-blue-500 underline">buradan</a> alabilirsiniz.
+            Hava durumu bilgilerini almak için API Keyinizi girin.
+            <p>API Keyi <a href="https://home.openweathermap.org/api_keys" target="_blank">buradan</a> alabilirsiniz.</p>
           </p>
           <input
               type="text"

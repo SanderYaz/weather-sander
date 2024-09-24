@@ -26,17 +26,21 @@ const CityModal = ({ city }: CityModal) => {
   };
 
   const fetchCityData = async () => {
-    const weatherService = new WeatherService();
-    const cityWeather = await weatherService.fetch.cityOpenWeather(city);
-    setCityData(cityWeather as CityFetch);
-    setLoading(false); // İstek tamamlandığında loading durumunu false yap
+    try {
+      const weatherService = new WeatherService();
+      const cityWeather = await weatherService.fetch.cityOpenWeather(city);
+      setCityData(cityWeather as CityFetch);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      return { cod: "404", message: error + "Hava durumu verileri alınamadı" };
+    }
   };
 
   useEffect(() => {
-    if (city && !cityData) {
-      fetchCityData();
-    }
-  }, [city]);
+    fetchCityData();
+  }, [cityData, fetchCityData]);
+
 
   const modalHeaderRender = () => {
     return `${helper.capitalizeFirstLetter(city)} Hava Durumu`;

@@ -18,7 +18,7 @@ export default class WeatherService {
       const data = await response.json();
       return data;
     } catch (error) {
-      return { cod: "404", message: "Hava durumu verileri alınamadı" };
+      return { cod: "404", message: error + "Hava durumu verileri alınamadı" };
     }
   };
 
